@@ -18,64 +18,72 @@ from dash.dependencies import Input, Output
 import pandas as pd
 
 import preprocess
-import heatmap_section_1
-import bubble_chart_section_1
-import grouped_bar_chart_section_2
-import univariate_scatter_plot_section_2
-import univariate_scatter_plot_section_3
+import section_1_heatmap
+import section_1_bubble_chart
+import section_2_grouped_bar_chart
+import section_2_univariate_scatter_plot
+import section_3_univariate_scatter_plot
 import template
 
 
 app = dash.Dash(__name__)
-app.title = 'AlayaCare...'
+app.title = 'AlayaCare'
 
 dataframe = pd.read_csv('./assets/data/notes.csv')
 dataframe2 = pd.read_csv('./assets/data/timeline_dataset.csv')
 
-# we also need to add the second data frame
-#the next is all not working yet
 
-dataFrameGeoupedBarChart = preprocess.getGroupedBarSums(dataframe2)
+dataFrameGroupedBarChart1 = preprocess.getGroupedBarHospitalizationCount(dataframe2)
+dataFrameGroupedBarChart2 = preprocess.getGroupedBarFallCount(dataframe2)
 
-#template.create_custom_theme()
-#template.set_default_theme()
+dataBubbleChart1 = preprocess.getPainDetailsRelation(dataframe2)
+dataHeatmapChart1 = preprocess.getFallsAndHospitalizationTimeline(dataframe2)
+
+dataUnivariateChart1 = preprocess.getFallsAndHospitalizationTimeline(dataframe2)
+
+dataUnivariateChart2 = preprocess.getCancellationAndPainRelation(dataframe2) 
+
+# We need to add template
+
+# template.create_custom_theme()
+# template.set_default_theme()
 
 app.layout = html.Div(className='content', children=[
     html.Header(children=[
         html.H1('AlayaCare'),
-        html.H2('Fun test')
+        html.H2("Relations entourant un patient et ses visites médicales")
     ]),
     html.Main(className='viz-container', children=[
-        # dcc.Graph(
-        #     id='heatmap_section_1',
-        #     className='graph',
-        #     figure=heatmap_section_1.get_figure(dataFrameGeoupedBarChart),
-        #     config=dict(
-        #         scrollZoom=False,
-        #         showTips=False,
-        #         showAxisDragHandles=False,
-        #         doubleClick=False,
-        #         displayModeBar=False
-        #     )
-        # )
-        # ,
-        # dcc.Graph(
-        #     id='bubble_chart_section_1',
-        #     className='graph',
-        #     figure=bubble_chart_section_1.get_figure(),
-        #     config=dict(
-        #         scrollZoom=False,
-        #         showTips=False,
-        #         showAxisDragHandles=False,
-        #         doubleClick=False,
-        #         displayModeBar=False
-        #     )
-        # )
-        # ,
+        dcc.Graph(
+            id='heatmap_section_1',
+            className='graph',
+            figure=section_1_heatmap.get_figure(dataHeatmapChart1),
+            config=dict(
+                scrollZoom=False,
+                showTips=False,
+                showAxisDragHandles=False,
+                doubleClick=False,
+                displayModeBar=False
+            )
+        )
+        ,
+        dcc.Graph(
+            id='bubble_chart_section_1',
+            className='graph',
+            figure=section_1_bubble_chart.get_figure(dataBubbleChart1),
+            config=dict(
+                scrollZoom=False,
+                showTips=False,
+                showAxisDragHandles=False,
+                doubleClick=False,
+                displayModeBar=False
+            )
+        )
+        ,
         dcc.Graph(
             id='grouped_bar_chart_1_section_2',
             className='graph',
-            figure=grouped_bar_chart_section_2.get_figure(dataFrameGeoupedBarChart),
+            figure=section_2_grouped_bar_chart.get_figure_hospitalization(dataFrameGroupedBarChart1),
             config=dict(
                 scrollZoom=False,
                 showTips=False,
@@ -87,7 +95,7 @@ app.layout = html.Div(className='content', children=[
         dcc.Graph(
             id='grouped_bar_chart_2_section_2',
             className='graph',
-            figure=grouped_bar_chart_section_2.get_figure(dataFrameGeoupedBarChart),
+            figure=section_2_grouped_bar_chart.get_figure_falls(dataFrameGroupedBarChart2),
             config=dict(
                 scrollZoom=False,
                 showTips=False,
@@ -96,32 +104,32 @@ app.layout = html.Div(className='content', children=[
                 displayModeBar=False
             )
         )
-        # ,
-        # dcc.Graph(
-        #     id='univariate_scatter_plot_section_2',
-        #     className='graph',
-        #     figure=univariate_scatter_plot_section_2.get_figure(),
-        #     config=dict(
-        #         scrollZoom=False,
-        #         showTips=False,
-        #         showAxisDragHandles=False,
-        #         doubleClick=False,
-        #         displayModeBar=False
-        #     )
-        # )
-        # ,
-        # dcc.Graph(
-        #     id='univariate_scatter_plot_section_3',
-        #     className='graph',
-        #     figure=univariate_scatter_plot_section_3.get_figure(),
-        #     config=dict(
-        #         scrollZoom=False,
-        #         showTips=False,
-        #         showAxisDragHandles=False,
-        #         doubleClick=False,
-        #         displayModeBar=False
-        #     )
-        # )
-        # ,
+        ,
+        dcc.Graph(
+            id='univariate_scatter_plot_section_2',
+            className='graph',
+            figure=section_2_univariate_scatter_plot.get_figure(dataUnivariateChart1),
+            config=dict(
+                scrollZoom=False,
+                showTips=False,
+                showAxisDragHandles=False,
+                doubleClick=False,
+                displayModeBar=False
+            )
+        )
+        ,
+        dcc.Graph(
+            id='univariate_scatter_plot_section_3',
+            className='graph',
+            figure=section_3_univariate_scatter_plot.get_figure(dataUnivariateChart2),
+            config=dict(
+                scrollZoom=False,
+                showTips=False,
+                showAxisDragHandles=False,
+                doubleClick=False,
+                displayModeBar=False
+            )
+        )
+        ,
     ])
 ])
