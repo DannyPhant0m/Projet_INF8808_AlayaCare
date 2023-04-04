@@ -11,8 +11,8 @@
 '''
 
 import dash
-import dash_html_components as html
-import dash_core_components as dcc
+from dash import html
+from dash import dcc
 from dash.dependencies import Input, Output
 
 import pandas as pd
@@ -35,13 +35,10 @@ dataframe2 = pd.read_csv('./assets/data/timeline_dataset.csv')
 # we also need to add the second data frame
 #the next is all not working yet
 
-dataframe = preprocess.convert_dates(dataframe)
-dataframe = preprocess.filter_years(dataframe, 2010, 2020)
-yearly_df = preprocess.summarize_yearly_counts(dataframe)
-data = preprocess.restructure_df(yearly_df)
+dataFrameGeoupedBarChart = preprocess.getGroupedBarSums(dataframe2)
 
-template.create_custom_theme()
-template.set_default_theme()
+#template.create_custom_theme()
+#template.set_default_theme()
 
 app.layout = html.Div(className='content', children=[
     html.Header(children=[
@@ -49,10 +46,48 @@ app.layout = html.Div(className='content', children=[
         html.H2('Fun test')
     ]),
     html.Main(className='viz-container', children=[
+        # dcc.Graph(
+        #     id='heatmap_section_1',
+        #     className='graph',
+        #     figure=heatmap_section_1.get_figure(dataFrameGeoupedBarChart),
+        #     config=dict(
+        #         scrollZoom=False,
+        #         showTips=False,
+        #         showAxisDragHandles=False,
+        #         doubleClick=False,
+        #         displayModeBar=False
+        #     )
+        # )
+        # ,
+        # dcc.Graph(
+        #     id='bubble_chart_section_1',
+        #     className='graph',
+        #     figure=bubble_chart_section_1.get_figure(),
+        #     config=dict(
+        #         scrollZoom=False,
+        #         showTips=False,
+        #         showAxisDragHandles=False,
+        #         doubleClick=False,
+        #         displayModeBar=False
+        #     )
+        # )
+        # ,
         dcc.Graph(
-            id='heatmap_section_1',
+            id='grouped_bar_chart_1_section_2',
             className='graph',
-            figure=heatmap_section_1.get_figure(data),
+            figure=grouped_bar_chart_section_2.get_figure(dataFrameGeoupedBarChart),
+            config=dict(
+                scrollZoom=False,
+                showTips=False,
+                showAxisDragHandles=False,
+                doubleClick=False,
+                displayModeBar=False
+            )
+        ),
+        dcc.Graph(
+            id='grouped_bar_chart_2_section_2',
+            className='graph',
+            figure=grouped_bar_chart_section_2.get_figure(dataFrameGeoupedBarChart),
             config=dict(
                 scrollZoom=False,
                 showTips=False,
@@ -61,58 +96,32 @@ app.layout = html.Div(className='content', children=[
                 displayModeBar=False
             )
         )
-        ,
-        dcc.Graph(
-            id='bubble_chart_section_1',
-            className='graph',
-            figure=bubble_chart_section_1.get_figure(),
-            config=dict(
-                scrollZoom=False,
-                showTips=False,
-                showAxisDragHandles=False,
-                doubleClick=False,
-                displayModeBar=False
-            )
-        )
-        ,
-        dcc.Graph(
-            id='grouped_bar_chart_section_2',
-            className='graph',
-            figure=grouped_bar_chart_section_2.get_figure(),
-            config=dict(
-                scrollZoom=False,
-                showTips=False,
-                showAxisDragHandles=False,
-                doubleClick=False,
-                displayModeBar=False
-            )
-        )
-        ,
-        dcc.Graph(
-            id='univariate_scatter_plot_section_2',
-            className='graph',
-            figure=univariate_scatter_plot_section_2.get_figure(),
-            config=dict(
-                scrollZoom=False,
-                showTips=False,
-                showAxisDragHandles=False,
-                doubleClick=False,
-                displayModeBar=False
-            )
-        )
-        ,
-        dcc.Graph(
-            id='univariate_scatter_plot_section_3',
-            className='graph',
-            figure=univariate_scatter_plot_section_3.get_figure(),
-            config=dict(
-                scrollZoom=False,
-                showTips=False,
-                showAxisDragHandles=False,
-                doubleClick=False,
-                displayModeBar=False
-            )
-        )
-        ,
+        # ,
+        # dcc.Graph(
+        #     id='univariate_scatter_plot_section_2',
+        #     className='graph',
+        #     figure=univariate_scatter_plot_section_2.get_figure(),
+        #     config=dict(
+        #         scrollZoom=False,
+        #         showTips=False,
+        #         showAxisDragHandles=False,
+        #         doubleClick=False,
+        #         displayModeBar=False
+        #     )
+        # )
+        # ,
+        # dcc.Graph(
+        #     id='univariate_scatter_plot_section_3',
+        #     className='graph',
+        #     figure=univariate_scatter_plot_section_3.get_figure(),
+        #     config=dict(
+        #         scrollZoom=False,
+        #         showTips=False,
+        #         showAxisDragHandles=False,
+        #         doubleClick=False,
+        #         displayModeBar=False
+        #     )
+        # )
+        # ,
     ])
 ])

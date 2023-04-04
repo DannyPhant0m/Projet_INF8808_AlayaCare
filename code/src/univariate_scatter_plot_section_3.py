@@ -6,7 +6,7 @@ import hover_template
 
 from template import THEME
 
-def get_figure(data, arrond, year):
+def get_figure(data):
     '''
         !!!!!!!!!!!!Add description here!!!!!!!!!
 

@@ -6,7 +6,7 @@ import hover_template
 
 from template import THEME
 
-def get_figure(data, arrond, year):
+def get_figure(data):
     '''
         !!!!!!!!!!!!Add description here!!!!!!!!!
 
@@ -16,5 +16,21 @@ def get_figure(data, arrond, year):
             The figure to be displayed
         
     '''
+    
+    fig = px.bar(
+        data,
+        x='PATIENT_ID',
+        y=['NOTES_COUNT_TOTAL', 'HOSPITALIZATION_COUNT'],
+        barmode='group',
+        title='Patient Notes and Hospitalizations'
+    )
 
-    return None
+    # Update the axis labels
+    fig.update_layout(
+        xaxis=dict(title='Patient ID'),
+        yaxis=dict(title='Count')
+    )
+
+    # Show the plot
+
+    return fig
