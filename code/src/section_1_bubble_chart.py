@@ -22,7 +22,7 @@ def get_figure(data):
         
     '''
 
-    fig = px.scatter(my_df, y='PATIENT_ID', x='DAY', 
+    fig = px.scatter(data, y='PATIENT_ID', x='DAY', 
                      color='HAS_PAIN_MENTION', size='VISIT_COUNTS', 
                      size_max=10, width=1200, height=700,
                      title='Douleur chez les patients vs nombre de visites',
