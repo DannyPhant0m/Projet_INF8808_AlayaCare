@@ -39,3 +39,21 @@ def get_linechart_hover_template():
         
     return hover_template
 
+
+    def get_bubble_hover_template():
+    '''
+        Sets the template for the hover tooltips in the bubble chart.
+        
+        Contains three labels, followed by their corresponding
+        value for the patient, the number of visits and the date.
+
+        The labels' font is bold and the values are normal weight
+
+        returns:
+            The content of the tooltip
+    '''
+   
+    return ("<b>Nom du Patient</b>: %{y}<br>"
+            "<b>Nombre de Visites</b>: %{marker.size:,}<br>"
+            "<b>Date</b>: %{x}<br>"
+            '<extra></extra>')
