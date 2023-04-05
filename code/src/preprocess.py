@@ -10,9 +10,9 @@ import pandas as pd
 
 def getPainDetailsRelation(dataframe):
     
-    #J'ai ajouter le pain_details, peut-etre que cela petu-etre pertinent pour toi
+    pd.to_datetime(dataframe['DAY'])
     
-    dataframe = dataframe[['PATIENT_ID','VISIT_COUNTS','HAS_PAIN_MENTION','PAIN_DETAILS']].copy()
+    dataframe = dataframe[['PATIENT_ID','DAY','VISIT_COUNTS','HAS_PAIN_MENTION']].copy()
     
     return dataframe
 
