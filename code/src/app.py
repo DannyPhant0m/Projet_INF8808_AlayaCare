@@ -39,7 +39,7 @@ dataFrameGroupedBarChart2 = preprocess.getGroupedBarFallCount(dataframe2)
 dataBubbleChart1 = preprocess.getPainDetailsRelation(dataframe2)
 dataHeatmapChart1 = preprocess.getFallsAndHospitalizationTimeline(dataframe2)
 
-dataUnivariateChart1 = preprocess.getFallsAndHospitalizationTimeline(dataframe2)
+dataUnivariateChart1 = preprocess.getCancellationAndAdlRelation(dataframe2)
 
 dataUnivariateChart2 = preprocess.getCancellationAndPainRelation(dataframe2) 
 
