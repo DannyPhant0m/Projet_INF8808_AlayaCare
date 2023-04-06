@@ -34,7 +34,16 @@ def getAdlCompletionTimeline(dataframe):
 
 def getFallsAndHospitalizationTimeline(dataframe):
     
-    dataframe = dataframe[['PATIENT_ID','FALL_COUNT','HOSPITALIZATION_COUNT']].copy()
+    # create a new column that classifies each observation as 'fall', 'hospitalization', or 'nothing'
+    conditions = [
+        (dataframe['FALL_COUNT'] == 1),
+        (dataframe['HOSPITALIZATION_COUNT'] == 1),
+        (dataframe['FALL_COUNT'] == 0) & (dataframe['HOSPITALIZATION_COUNT'] == 0)
+    ]
+    choices = ['Chute', 'Hospitalisation', 'rien']
+    dataframe['EVENT_TYPE'] = np.select(conditions, choices, default='unknown')
+
+    dataframe = dataframe[['PATIENT_ID','DAY','EVENT_TYPE']].copy()
     
     return dataframe
 
