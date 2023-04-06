@@ -2,7 +2,7 @@
     Contains some functions to preprocess the data used in the visualisation.
 '''
 import pandas as pd
-
+import numpy as np
 
 '''
     Section 2.1.1: Évolution de la relation entre le douleur et le nombre de visites 
