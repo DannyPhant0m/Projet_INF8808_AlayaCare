@@ -62,7 +62,7 @@ app.layout = html.Div(className='content', children=[
             dcc.Tabs(
                 style={
                     'height': '100%',
-                    'width': '1700px',
+                    'width': '100%',
                     'display': 'flex',
                     'justifyContent': 'flex-start',
                     'alignItems': 'center',
@@ -72,7 +72,7 @@ app.layout = html.Div(className='content', children=[
                     'padding': '20px'
                 },
                 children = [
-                dcc.Tab(label='Tab one', children=[
+                dcc.Tab(label='Douleur et visites', children=[
                     dcc.Graph(
                         id='heatmap_section_1',
                         className='graph',
@@ -90,7 +90,7 @@ app.layout = html.Div(className='content', children=[
                         )
                     )
                 ]),
-                dcc.Tab(label='Tab 2', children=[
+                dcc.Tab(label='Progression du niveau de complétion', children=[
                     dcc.Graph(
                         id='bubble_chart_section_1',
                         className='graph',
@@ -109,7 +109,7 @@ app.layout = html.Div(className='content', children=[
                     )
                 ])
                 ,
-                dcc.Tab(label='Tab 3', children=[
+                dcc.Tab(label='Notes et hospitalisations', children=[
                     dcc.Graph(
                         id='grouped_bar_chart_1_section_2',
                         className='graph',
@@ -144,7 +144,7 @@ app.layout = html.Div(className='content', children=[
                     )
                 ])
                 ,
-                dcc.Tab(label='Tab 5', children=[
+                dcc.Tab(label='Chutes et hospitalisations', children=[
                     dcc.Graph(
                         id='univariate_scatter_plot_section_2',
                         className='graph',
@@ -163,7 +163,7 @@ app.layout = html.Div(className='content', children=[
                     )
                 ])
                 ,
-                dcc.Tab(label='Tab 6', children=[
+                dcc.Tab(label='Annulation de visites', children=[
                     dcc.Graph(
                         id='univariate_scatter_plot_section_3',
                         className='graph',
