@@ -76,7 +76,7 @@ app.layout = html.Div(className='content', children=[
                     dcc.Graph(
                         id='heatmap_section_1',
                         className='graph',
-                        figure=section_1_heatmap.get_figure(dataHeatmapChart1),
+                        figure=section_1_bubble_chart.get_figure(dataBubbleChart1),
                         config=dict(
                             scrollZoom=False,
                             showTips=False,
@@ -94,7 +94,7 @@ app.layout = html.Div(className='content', children=[
                     dcc.Graph(
                         id='bubble_chart_section_1',
                         className='graph',
-                        figure=section_1_bubble_chart.get_figure(dataBubbleChart1),
+                        figure=section_1_heatmap.get_figure(dataHeatmapChart1),
                         config=dict(
                             scrollZoom=False,
                             showTips=False,
