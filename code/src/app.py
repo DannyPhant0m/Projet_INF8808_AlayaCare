@@ -53,83 +53,135 @@ app.layout = html.Div(className='content', children=[
         html.H1('AlayaCare'),
         html.H2("Relations entourant un patient et ses visites médicales")
     ]),
-    html.Main(className='viz-container', children=[
-        dcc.Graph(
-            id='heatmap_section_1',
-            className='graph',
-            figure=section_1_heatmap.get_figure(dataHeatmapChart1),
-            config=dict(
-                scrollZoom=False,
-                showTips=False,
-                showAxisDragHandles=False,
-                doubleClick=False,
-                displayModeBar=False
-            )
-        )
-        ,
-        dcc.Graph(
-            id='bubble_chart_section_1',
-            className='graph',
-            figure=section_1_bubble_chart.get_figure(dataBubbleChart1),
-            config=dict(
-                scrollZoom=False,
-                showTips=False,
-                showAxisDragHandles=False,
-                doubleClick=False,
-                displayModeBar=False
-            )
-        )
-        ,
-        dcc.Graph(
-            id='grouped_bar_chart_1_section_2',
-            className='graph',
-            figure=section_2_grouped_bar_chart.get_figure_hospitalization(dataFrameGroupedBarChart1),
-            config=dict(
-                scrollZoom=False,
-                showTips=False,
-                showAxisDragHandles=False,
-                doubleClick=False,
-                displayModeBar=False
-            )
-        ),
-        dcc.Graph(
-            id='grouped_bar_chart_2_section_2',
-            className='graph',
-            figure=section_2_grouped_bar_chart.get_figure_falls(dataFrameGroupedBarChart2),
-            config=dict(
-                scrollZoom=False,
-                showTips=False,
-                showAxisDragHandles=False,
-                doubleClick=False,
-                displayModeBar=False
-            )
-        )
-        ,
-        dcc.Graph(
-            id='univariate_scatter_plot_section_2',
-            className='graph',
-            figure=section_2_univariate_scatter_plot.get_figure(dataUnivariateChart1),
-            config=dict(
-                scrollZoom=False,
-                showTips=False,
-                showAxisDragHandles=False,
-                doubleClick=False,
-                displayModeBar=False
-            )
-        )
-        ,
-        dcc.Graph(
-            id='univariate_scatter_plot_section_3',
-            className='graph',
-            figure=section_3_univariate_scatter_plot.get_figure(dataUnivariateChart2),
-            config=dict(
-                scrollZoom=False,
-                showTips=False,
-                showAxisDragHandles=False,
-                doubleClick=False,
-                displayModeBar=False
-            )
-        )
-        ,
+    html.Main(
+        className='viz-container', 
+        style={ 
+            'display': 'table',
+        }, 
+        children=[
+            dcc.Tabs(
+                style={
+                    'height': '100%',
+                    'width': '100%',
+                    'display': 'flex',
+                    'justifyContent': 'flex-start',
+                    'alignItems': 'center',
+                }, 
+                content_style={
+                    'display': 'flex',
+                    'padding': '20px'
+                },
+                children = [
+                dcc.Tab(label='Douleur et visites', children=[
+                    dcc.Graph(
+                        id='heatmap_section_1',
+                        className='graph',
+                        figure=section_1_bubble_chart.get_figure(dataBubbleChart1),
+                        config=dict(
+                            scrollZoom=False,
+                            showTips=False,
+                            showAxisDragHandles=False,
+                            doubleClick=False,
+                            displayModeBar=False
+                        ),
+                        style=dict(
+                            height='500px',
+                            width='800px'
+                        )
+                    )
+                ]),
+                dcc.Tab(label='Progression du niveau de complétion', children=[
+                    dcc.Graph(
+                        id='bubble_chart_section_1',
+                        className='graph',
+                        figure=section_1_heatmap.get_figure(dataHeatmapChart1),
+                        config=dict(
+                            scrollZoom=False,
+                            showTips=False,
+                            showAxisDragHandles=False,
+                            doubleClick=False,
+                            displayModeBar=False
+                        ),
+                        style=dict(
+                            height='500px',
+                            width='800px'
+                        )
+                    )
+                ])
+                ,
+                dcc.Tab(label='Notes et hospitalisations', children=[
+                    dcc.Graph(
+                        id='grouped_bar_chart_1_section_2',
+                        className='graph',
+                        figure=section_2_grouped_bar_chart.get_figure_hospitalization(dataFrameGroupedBarChart1),
+                        config=dict(
+                            scrollZoom=False,
+                            showTips=False,
+                            showAxisDragHandles=False,
+                            doubleClick=False,
+                            displayModeBar=False
+                        ),
+                        style=dict(
+                            height='500px',
+                            width='800px'
+                        )
+                    ),
+                    dcc.Graph(
+                        id='grouped_bar_chart_2_section_2',
+                        className='graph',
+                        figure=section_2_grouped_bar_chart.get_figure_falls(dataFrameGroupedBarChart2),
+                        config=dict(
+                            scrollZoom=False,
+                            showTips=False,
+                            showAxisDragHandles=False,
+                            doubleClick=False,
+                            displayModeBar=False
+                        ),
+                        style=dict(
+                            height='500px',
+                            width='800px'
+                        )
+                    )
+                ])
+                ,
+                dcc.Tab(label='Chutes et hospitalisations', children=[
+                    dcc.Graph(
+                        id='univariate_scatter_plot_section_2',
+                        className='graph',
+                        figure=section_2_univariate_scatter_plot.get_figure(dataUnivariateChart1),
+                        config=dict(
+                            scrollZoom=False,
+                            showTips=False,
+                            showAxisDragHandles=False,
+                            doubleClick=False,
+                            displayModeBar=False
+                        ),
+                        style=dict(
+                            height='500px',
+                            width='800px'
+                        )
+                    )
+                ])
+                ,
+                dcc.Tab(label='Annulation de visites', children=[
+                    dcc.Graph(
+                        id='univariate_scatter_plot_section_3',
+                        className='graph',
+                        figure=section_3_univariate_scatter_plot.get_figure(dataUnivariateChart2),
+                        config=dict(
+                            scrollZoom=False,
+                            showTips=False,
+                            showAxisDragHandles=False,
+                            doubleClick=False,
+                            displayModeBar=False
+                        ),
+                        style=dict(
+                            height='500px',
+                            width='800px'
+                        )
+                    )
+                ])
+                ,
+            ])
     ])
 ])

@@ -8,14 +8,12 @@ from template import THEME
 
 def get_figure(data):
     '''
-        !!!!!!!!!!!!Add description here!!!!!!!!!
-
-        Args: !!!!!!add arguments!!!!!!!!!!!
+        Args: data: The dataframe to display
             
         Returns: 
             The figure to be displayed
         
-    '''
+    # '''
     fig = px.bar(
         data,
         x='PATIENT_ID',
