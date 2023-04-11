@@ -13,30 +13,72 @@ def get_figure(data):
         Returns: 
             The figure to be displayed
         
-    # '''
-    fig = px.bar(
-        data,
-        x='PATIENT_ID',
-        y=[data['CANCELLATION_COUNTS'], data['ADL_COMPLETION_PERCENTAGE']],
-        barmode='group',
-        title="Pourcentage de complétion d'activités versus nombre d'annulation<br>d'un rendez-vous d'un patient au cours de 28 jours",
+    '''
+
+    # We create an scatter plot with the data
+    fig = px.scatter(
+        data[data['EVENT_TYPE'] != 'rien'], 
+        x='PATIENT_ID', 
+        y='DAY', 
+        width=1000,
+        height=600,
+        color='EVENT_TYPE', 
+        hover_data={'PATIENT_ID','DAY','EVENT_TYPE'},
+        color_discrete_sequence=['#7786FA','#FF6100'],
     )
 
-    fig.update_layout(
-        xaxis=dict(title='Patient'),
-        yaxis=dict(title='Nombre'),
-        legend_title='Légende',
-        title={
-            'text': "<b>Pourcentage de complétion d'activités versus nombre d'annulation<br>d'un rendez-vous d'un patient au cours de 28 jours<b>",
-            'font': {
-                'size': 15,
-            },
-            'x': 0.4,
-            'xanchor': 'center',
-        },
+    # We update the layout of the figure
+    fig.update_traces(marker={'size': 11})
+
+    # We update the hover template
+    fig.update_traces(
+        hovertemplate="<br>".join([
+            "<b>Nom du Patient</b>: %{x}",
+            "<b>Date</b>: %{y}",
+            "<b>Type d'événement</b>: %{customdata[0]}",
+            "<extra></extra>"
+        ])
+    )
+
+    # We update the x axis
+    fig.update_xaxes(
+        title_text="<b>Nom du Patient</b>",
+        tickangle = -45
+    )
+
+    # We update the y axis
+    fig.update_yaxes(
+        title_text="<b>Jour</b>",
+        nticks=15, 
+        tickformat='%Y-%m-%d'
     )
     
-    fig.data[0].name = 'Nombre d\'annulations'
-    fig.data[1].name = 'Pourcentage de complétion d\'activité'
+    # We update the legend and the title
+    fig.update_layout(
+        legend=dict(
+            orientation='h',
+            yanchor='top',
+            y=1.1,
+            xanchor='center',
+            x=0.5,
+            title=None,
+            font=dict(
+                family='Arial',
+                size=12,
+            ),
+        ),
+        title=dict(
+            text = "<b>Nombre de notes versus nombre d'hospitalisations d'un patient au cours de 28 jours<b>",
+            font = {
+                'size': 15,
+            },
+            x=0.5,
+            y=1.0,
+        ),
+    )
+
+    # We update the background color
+    fig.update_layout(plot_bgcolor='white')
+    fig.update_xaxes(showgrid=True, gridwidth=1, gridcolor='lightgray')
 
     return fig

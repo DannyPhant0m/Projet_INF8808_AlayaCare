@@ -39,9 +39,10 @@ dataFrameGroupedBarChart2 = preprocess.getGroupedBarFallCount(dataframe2)
 dataBubbleChart1 = preprocess.getPainDetailsRelation(dataframe2)
 dataHeatmapChart1 = preprocess.getFallsAndHospitalizationTimeline(dataframe2)
 
-dataUnivariateChart1 = preprocess.getCancellationAndAdlRelation(dataframe2)
+dataUnivariateChart = preprocess.getFallsAndHospitalizationTimeline(dataframe2)
 
-dataUnivariateChart2 = preprocess.getCancellationAndPainRelation(dataframe2) 
+dataUnivariateChart1 = preprocess.getCancellationAndPainRelation(dataframe2)
+dataUnivariateChart2 = preprocess.getCancellationAndAdlRelation(dataframe2) 
 
 # We need to add template
 
@@ -148,7 +149,7 @@ app.layout = html.Div(className='content', children=[
                     dcc.Graph(
                         id='univariate_scatter_plot_section_2',
                         className='graph',
-                        figure=section_2_univariate_scatter_plot.get_figure(dataUnivariateChart1),
+                        figure=section_2_univariate_scatter_plot.get_figure(dataUnivariateChart),
                         config=dict(
                             scrollZoom=False,
                             showTips=False,
@@ -165,9 +166,25 @@ app.layout = html.Div(className='content', children=[
                 ,
                 dcc.Tab(label='Annulation de visites', children=[
                     dcc.Graph(
-                        id='univariate_scatter_plot_section_3',
+                        id='univariate_scatter_plot_section_3_1',
                         className='graph',
-                        figure=section_3_univariate_scatter_plot.get_figure(dataUnivariateChart2),
+                        figure=section_3_univariate_scatter_plot.get_figure_1(dataUnivariateChart1),
+                        config=dict(
+                            scrollZoom=False,
+                            showTips=False,
+                            showAxisDragHandles=False,
+                            doubleClick=False,
+                            displayModeBar=False
+                        ),
+                        style=dict(
+                            height='500px',
+                            width='800px'
+                        )
+                    ),
+                    dcc.Graph(
+                        id='univariate_scatter_plot_section_3_2',
+                        className='graph',
+                        figure=section_3_univariate_scatter_plot.get_figure_2(dataUnivariateChart2),
                         config=dict(
                             scrollZoom=False,
                             showTips=False,
