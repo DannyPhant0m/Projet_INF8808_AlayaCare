@@ -25,7 +25,13 @@ def getPainDetailsRelation(dataframe):
 
 def getAdlCompletionTimeline(dataframe):
     
-    dataframe = dataframe[['PATIENT_ID','VISIT_COUNTS','ADL_COMPLETION_PERCENTAGE']].copy()
+    pd.to_datetime(dataframe['DAY'])
+    
+    dataframe = dataframe[['PATIENT_ID','DAY','ADL_COMPLETION_PERCENTAGE']].copy()
+    
+    dataframe=dataframe.pivot(index='PATIENT_ID',columns='DAY',values='ADL_COMPLETION_PERCENTAGE')
+
+    dataframe=dataframe.replace(0, np.nan)
     
     return dataframe
 
