@@ -17,7 +17,7 @@ def get_figure(data):
         Returns: 
             The figure to be displayed
         
-    
+    '''
     fig = px.imshow(data,
                     labels=dict(x="Journée",
                                 y="Patient", 
@@ -33,6 +33,6 @@ def get_figure(data):
     
     fig.update_traces(hovertemplate = hover_template.get_heatmap_hover_template())
     
-    '''
+    
     
     return None
