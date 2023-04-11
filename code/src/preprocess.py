@@ -10,11 +10,11 @@ import numpy as np
 
 def getPainDetailsRelation(dataframe):
     
-    pd.to_datetime(dataframe['DAY'])
-    
-    #dataframe['HAS_PAIN_MENTION']=dataframe['HAS_PAIN_MENTION'].map({True:'Oui',False:'Non'})
-    
+    pd.to_datetime(dataframe['DAY'])    
+     
     dataframe = dataframe[['PATIENT_ID','DAY','VISIT_COUNTS','HAS_PAIN_MENTION']].copy()
+    
+    dataframe['HAS_PAIN_MENTION']=dataframe['HAS_PAIN_MENTION'].map({True:'Oui',False:'Non'})
     
     return dataframe
 
