@@ -50,7 +50,6 @@ def get_figure_2(data):
         
     # '''
     
-    print(data)
     fig = px.bar(
         data,
         x='PATIENT_ID',
