@@ -12,6 +12,8 @@ def getPainDetailsRelation(dataframe):
     
     pd.to_datetime(dataframe['DAY'])
     
+    dataframe['HAS_PAIN_MENTION']=dataframe['HAS_PAIN_MENTION'].map({True:'Oui',False:'Non'})
+    
     dataframe = dataframe[['PATIENT_ID','DAY','VISIT_COUNTS','HAS_PAIN_MENTION']].copy()
     
     return dataframe
