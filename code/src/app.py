@@ -37,7 +37,7 @@ dataFrameGroupedBarChart1 = preprocess.getGroupedBarHospitalizationCount(datafra
 dataFrameGroupedBarChart2 = preprocess.getGroupedBarFallCount(dataframe2)
 
 dataBubbleChart1 = preprocess.getPainDetailsRelation(dataframe2)
-dataHeatmapChart1 = preprocess.getFallsAndHospitalizationTimeline(dataframe2)
+dataHeatmapChart1 = preprocess.getAdlCompletionTimeline(dataframe2)
 
 dataUnivariateChart = preprocess.getFallsAndHospitalizationTimeline(dataframe2)
 
