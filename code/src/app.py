@@ -23,6 +23,9 @@ import section_1_bubble_chart
 import section_2_grouped_bar_chart
 import section_2_univariate_scatter_plot
 import section_3_univariate_scatter_plot
+
+import texts
+
 import template
 
 
@@ -65,15 +68,26 @@ app.layout = html.Div(className='content', children=[
                     'height': '100%',
                     'width': '100%',
                     'display': 'flex',
-                    'justifyContent': 'flex-start',
                     'alignItems': 'center',
                 }, 
                 content_style={
-                    'display': 'flex',
+                    'align-self': 'center',                    
                     'padding': '20px',
                     'justify-content': 'center'
                 },
                 children = [
+                    dcc.Tab(label='Accueil', children=[
+                        html.Div([
+                            html.P(texts.HOME_DESCRIPTION)
+                        ],
+                        style={
+                            'font-size': '17px',
+                            'padding': '20px',
+                            'text-align': 'center',
+                            'display': 'flex',
+                            'align-content': 'center',
+                        }),
+                ]),
                 dcc.Tab(label='Douleur et visites', children=[
                     dcc.Graph(
                         id='heatmap_section_1',
@@ -91,7 +105,7 @@ app.layout = html.Div(className='content', children=[
                         )
                     )
                 ]),
-                dcc.Tab(label='Progression du niveau de complétion', children=[
+                dcc.Tab(label='complétion des activités', children=[
                     dcc.Graph(
                         id='bubble_chart_section_1',
                         className='graph',
@@ -111,38 +125,75 @@ app.layout = html.Div(className='content', children=[
                 ])
                 ,
                 dcc.Tab(label='Notes et hospitalisations', children=[
-                    dcc.Graph(
-                        id='grouped_bar_chart_1_section_2',
-                        className='graph',
-                        figure=section_2_grouped_bar_chart.get_figure_hospitalization(dataFrameGroupedBarChart1),
-                        config=dict(
-                            scrollZoom=False,
-                            showTips=False,
-                            showAxisDragHandles=False,
-                            doubleClick=False,
-                            displayModeBar=False
+                    html.Div([
+                        html.P(texts.SECTION_2_GROUPED_BAR_HEADER)
+                    ],
+                    style={
+                        'font-size': '17px',
+                        'padding': '20px',
+                        'text-align': 'center',
+                        'display': 'flex',
+                        'align-content': 'center',
+                        'margin-left': '5%'
+                    }),
+                    html.Div([
+                        html.P(
+                            texts.SECTION_2_GROUPED_BAR_1_DESCRIPTION, 
+                            style={
+                                'font-size': '15px',
+                                'padding': '20px',
+                                'width': '350px'
+                            }
                         ),
-                        style=dict(
-                            height='500px',
-                            width='800px'
+                        dcc.Graph(
+                            id='grouped_bar_chart_1_section_2',
+                            className='graph',
+                            figure=section_2_grouped_bar_chart.get_figure_hospitalization(dataFrameGroupedBarChart1),
+                            config=dict(
+                                scrollZoom=False,
+                                showTips=False,
+                                showAxisDragHandles=False,
+                                doubleClick=False,
+                                displayModeBar=False
+                            ),
+                            style=dict(
+                                height='500px',
+                                width='800px'
+                            )
                         )
-                    ),
-                    dcc.Graph(
-                        id='grouped_bar_chart_2_section_2',
-                        className='graph',
-                        figure=section_2_grouped_bar_chart.get_figure_falls(dataFrameGroupedBarChart2),
-                        config=dict(
-                            scrollZoom=False,
-                            showTips=False,
-                            showAxisDragHandles=False,
-                            doubleClick=False,
-                            displayModeBar=False
+                    ],
+                    style={
+                        'display': 'flex'
+                    }),
+                    html.Div([
+                        html.P(
+                            texts.SECTION_2_GROUPED_BAR_1_DESCRIPTION, 
+                            style={
+                                'font-size': '15px',
+                                'padding': '20px',
+                                'width': '350px'
+                            }
                         ),
-                        style=dict(
-                            height='500px',
-                            width='800px'
+                        dcc.Graph(
+                            id='grouped_bar_chart_2_section_2',
+                            className='graph',
+                            figure=section_2_grouped_bar_chart.get_figure_falls(dataFrameGroupedBarChart2),
+                            config=dict(
+                                scrollZoom=False,
+                                showTips=False,
+                                showAxisDragHandles=False,
+                                doubleClick=False,
+                                displayModeBar=False
+                            ),
+                            style=dict(
+                                height='500px',
+                                width='800px'
+                            )
                         )
-                    )
+                    ],
+                    style={
+                        'display': 'flex'
+                    }),
                 ])
                 ,
                 dcc.Tab(label='Chutes et hospitalisations', children=[

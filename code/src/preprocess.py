@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 
 '''
-    Section 2.1.1: Évolution de la relation entre le douleur et le nombre de visites 
+    Section 1.1: Évolution de la relation entre le douleur et le nombre de visites 
 '''
 
 def getPainDetailsRelation(dataframe):
@@ -20,7 +20,7 @@ def getPainDetailsRelation(dataframe):
 
 
 '''
-    Section 2.1.2:  Progression du niveau de complétion des activités par patient 
+    Section 1.2:  Progression du niveau de complétion des activités par patient 
 '''
 
 def getAdlCompletionTimeline(dataframe):
@@ -37,7 +37,7 @@ def getAdlCompletionTimeline(dataframe):
 
 
 '''
-    Section 2.2.1: Nombre de chutes et d'hospitalisations
+    Section 2.1: Nombre de chutes et d'hospitalisations
 '''
 
 def getFallsAndHospitalizationTimeline(dataframe):
@@ -57,7 +57,7 @@ def getFallsAndHospitalizationTimeline(dataframe):
 
 
 '''
-    Section 2.2.2 : Nombre de notes et d'hospitalisations
+    Section 2.2 : Nombre de notes et d'hospitalisations
 '''
 
 def getGroupedBarHospitalizationCount(dataframe):
@@ -76,7 +76,7 @@ def getGroupedBarFallCount(dataframe):
 
 
 '''
-    Section 2.3: Relations avec l'annulation de visites
+    Section 3: Relations avec l'annulation de visites
 '''
 
 def getCancellationAndPainRelation(dataframe):
