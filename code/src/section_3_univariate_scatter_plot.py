@@ -36,6 +36,10 @@ def get_figure_1(data):
         },
     )
     
+    fig.update_xaxes(
+        tickangle = -45,
+    )
+    
     fig.data[0].name = 'Nombre d\'annulations'
     fig.data[1].name = 'Nombre de mention de douleurs'
 
@@ -70,6 +74,10 @@ def get_figure_2(data):
             'x': 0.4,
             'xanchor': 'center',
         },
+    )
+    
+    fig.update_xaxes(
+        tickangle = -45,
     )
     
     fig.data[0].name = 'Nombre d\'annulations'

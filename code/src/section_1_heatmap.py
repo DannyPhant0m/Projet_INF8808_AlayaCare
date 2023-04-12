@@ -18,21 +18,31 @@ def get_figure(data):
             The figure to be displayed
         
     '''
-    fig = px.imshow(data,
-                    labels=dict(x="Journée",
-                                y="Patient", 
-                                color="Taux de complétion d'activtiés (%)"),
-                    color_continuous_scale=['#FFE3C0','#FFDFBA','#FFA73A','#F89213','#FF6100']
-                )
+    fig = px.imshow(
+        data,
+        labels=dict(
+            x="Journée",
+            y="Patient", 
+            color="Taux de complétion d'activtiés (%)"
+        ),
+        color_continuous_scale=['#FFE3C0','#FFDFBA','#FFA73A','#F89213','#FF6100'],
+        title='<b>Pourcentage de complétion des activités au long des visites</b>',
+        width=1300
+    )
 
-    fig.update_layout(title='Pourcentage de complétion des activités au long des visites',
-                      xaxis_nticks=len(data.columns),
-                      paper_bgcolor='rgba(0,0,0,0)',
-                      plot_bgcolor='rgba(0,0,0,0)'
-                    )
+    fig.update_layout(
+        title_font_size=15,
+        title_x=0.45,
+        xaxis_nticks=len(data.columns),
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+    )
+    
+    fig.update_xaxes(
+        tickangle = -45,
+        tickformat='%Y-%m-%d'
+    )
     
     fig.update_traces(hovertemplate = hover_template.get_heatmap_hover_template())
     
-    
-    
-    return None
+    return fig

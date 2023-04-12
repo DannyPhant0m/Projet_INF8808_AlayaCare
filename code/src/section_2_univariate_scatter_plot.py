@@ -15,7 +15,7 @@ def get_figure(data):
         
     '''
 
-    # We create an scatter plot with the data
+    # We create a scatter plot with the data
     fig = px.scatter(
         data[data['EVENT_TYPE'] != 'rien'], 
         x='PATIENT_ID', 
@@ -75,6 +75,7 @@ def get_figure(data):
             x=0.5,
             y=1.0,
         ),
+        margin=dict(t=20),
     )
 
     # We update the background color

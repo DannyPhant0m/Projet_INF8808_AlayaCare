@@ -2,6 +2,8 @@
     Contains some functions related to the creation of the grouped bar chart.
 '''
 import plotly.express as px
+import plotly.graph_objects as go
+
 import hover_template
 
 from template import THEME
@@ -18,13 +20,23 @@ def get_figure_hospitalization(data):
         
     '''
     
-    fig = px.bar(
-        data,
-        x='PATIENT_ID',
-        y=['NOTES_COUNT_TOTAL', 'HOSPITALIZATION_COUNT'],
-        barmode='group',
-        title="Nombre de notes versus nombre d'hospitalisations d'un patient au cours de 28 jours",
-    )
+    fig = go.Figure()
+
+    fig.add_trace(go.Bar(
+        x=data['PATIENT_ID'],
+        y=data['NOTES_COUNT_TOTAL'],
+        name='Nombre de notes',
+        marker_color='#7786FA',
+        hovertemplate=hover_template.get_grouped_bar_notes_hover_template()
+    ))
+
+    fig.add_trace(go.Bar(
+        x=data['PATIENT_ID'],
+        y=data['HOSPITALIZATION_COUNT'],
+        name='Nombre d\'hospitalisations',
+        marker_color='#FF6100',
+        hovertemplate=hover_template.get_grouped_bar_hospitalization_hover_template()
+    ))
 
     fig.update_layout(
         xaxis=dict(title='Patient'),
@@ -40,10 +52,12 @@ def get_figure_hospitalization(data):
         },
     )
     
-    fig.data[0].name = 'Nombre de notes'
-    fig.data[1].name = 'Nombre d\'hospitalisations'
+    fig.update_xaxes(
+        tickangle = -45,
+    )
 
     return fig
+
 
 def get_figure_falls(data):
     '''
@@ -57,13 +71,23 @@ def get_figure_falls(data):
         
     '''
     
-    fig = px.bar(
-        data,
-        x='PATIENT_ID',
-        y=['NOTES_COUNT_TOTAL', 'FALL_COUNT'],
-        barmode='group',
-        title="Nombre de notes versus nombre de chutes d'un patient au cours de 28 jours"
-    )
+    fig = go.Figure()
+
+    fig.add_trace(go.Bar(
+        x=data['PATIENT_ID'],
+        y=data['NOTES_COUNT_TOTAL'],
+        name='Nombre de notes',
+        marker_color='#7786FA',
+        hovertemplate=hover_template.get_grouped_bar_notes_hover_template()
+    ))
+
+    fig.add_trace(go.Bar(
+        x=data['PATIENT_ID'],
+        y=data['FALL_COUNT'],
+        name='Nombre de chutes',
+        marker_color='#FF6100',
+                hovertemplate=hover_template.get_grouped_bar_falls_hover_template()
+    ))
 
     fig.update_layout(
         xaxis=dict(title='Patient'),
@@ -79,7 +103,8 @@ def get_figure_falls(data):
         },
     )
     
-    fig.data[0].name = 'Nombre de notes'
-    fig.data[1].name = 'Nombre de chutes'
+    fig.update_xaxes(
+        tickangle = -45,
+    )
 
     return fig

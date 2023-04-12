@@ -22,28 +22,36 @@ def get_figure(data):
         
     '''
 
-    fig = px.scatter(data, y='PATIENT_ID', x='DAY', 
-                     color='HAS_PAIN_MENTION', size='VISIT_COUNTS', 
-                     size_max=10, width=1200, height=700,
-                     title='<b>Douleur chez les patients vs nombre de visites</b>',
-                     color_discrete_sequence=['#7786FA','#FF6100'],
-                     labels=dict(PATIENT_ID='<b>Nom du Patient</b>', DAY='<b>Jour</b>', HAS_PAIN_MENTION='Douleur')
-                     
-                     )
-    
-    fig.update_layout(
-                    title_font_size=16,
-                    title_font_family="Arial Black",
-                    title_x=0.5 #center title
+    fig = px.scatter(
+        data, 
+        y='PATIENT_ID', 
+        x='DAY', 
+        color='HAS_PAIN_MENTION', 
+        size='VISIT_COUNTS', 
+        size_max=10, width=1200, 
+        height=600,
+        title='<b>Douleur chez les patients vs nombre de visites</b>',
+        color_discrete_sequence=['#7786FA','#FF6100'],
+        labels=dict(
+            PATIENT_ID='<b>Nom du Patient</b>', 
+            DAY='<b>Jour</b>', 
+            HAS_PAIN_MENTION='Douleur'
+        )      
     )
     
-    fig.update_xaxes(tickangle = -45,
-                     nticks=28,
-                     tickformat='%Y-%m-%d'
-                     )
+    fig.update_layout(
+        title_font_size=15,
+        title_x=0.5 #center title
+    )
+    
+    fig.update_xaxes(
+        tickangle = -45,
+        nticks=28,
+        tickformat='%Y-%m-%d'
+    )
     
     fig.update_traces(
-                     hovertemplate=hover_template.get_bubble_hover_template()
-                     )
+        hovertemplate=hover_template.get_bubble_hover_template()
+    )
 
     return fig

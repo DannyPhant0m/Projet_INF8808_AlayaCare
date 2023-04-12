@@ -70,7 +70,8 @@ app.layout = html.Div(className='content', children=[
                 }, 
                 content_style={
                     'display': 'flex',
-                    'padding': '20px'
+                    'padding': '20px',
+                    'justify-content': 'center'
                 },
                 children = [
                 dcc.Tab(label='Douleur et visites', children=[
@@ -87,7 +88,6 @@ app.layout = html.Div(className='content', children=[
                         ),
                         style=dict(
                             height='500px',
-                            width='800px'
                         )
                     )
                 ]),
@@ -105,7 +105,7 @@ app.layout = html.Div(className='content', children=[
                         ),
                         style=dict(
                             height='500px',
-                            width='800px'
+                            width='1300px'
                         )
                     )
                 ])
@@ -156,10 +156,6 @@ app.layout = html.Div(className='content', children=[
                             showAxisDragHandles=False,
                             doubleClick=False,
                             displayModeBar=False
-                        ),
-                        style=dict(
-                            height='500px',
-                            width='800px'
                         )
                     )
                 ])
