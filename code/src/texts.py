@@ -42,7 +42,7 @@ SECTION_2_GROUPED_BAR_HEADER = " Ce section présente la corrélation possible e
 
 SECTION_2_GROUPED_BAR_1_DESCRIPTION = " Ce graphique à barres groupées permet de distinguer rapidement la disparité entre les notes prises et le nombre d'hospitalisations "
 
-SECTION_2_GROUPED_BAR_1_DESCRIPTION = " Ce graphique à barres groupées permet de distinguer rapidement la disparité entre les notes prises et le nombre de chutes "
+SECTION_2_GROUPED_BAR_2_DESCRIPTION = " Ce graphique à barres groupées permet de distinguer rapidement la disparité entre les notes prises et le nombre de chutes "
 
 
 '''

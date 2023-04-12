@@ -167,7 +167,7 @@ app.layout = html.Div(className='content', children=[
                     }),
                     html.Div([
                         html.P(
-                            texts.SECTION_2_GROUPED_BAR_1_DESCRIPTION, 
+                            texts.SECTION_2_GROUPED_BAR_2_DESCRIPTION, 
                             style={
                                 'font-size': '15px',
                                 'padding': '20px',
