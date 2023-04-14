@@ -29,7 +29,7 @@ import texts
 import template
 
 
-app = dash.Dash(__name__)
+app = dash.Dash()
 app.title = 'AlayaCare'
 
 dataframe = pd.read_csv('./assets/data/notes.csv')
@@ -52,8 +52,10 @@ dataUnivariateChart2 = preprocess.getCancellationAndAdlRelation(dataframe2)
 # template.create_custom_theme()
 # template.set_default_theme()
 
+
+
 app.layout = html.Div(className='content', children=[
-    html.Header(children=[
+    html.Header(className='header', children=[
         html.H1('AlayaCare'),
         html.H2("Relations entourant un patient et ses visites médicales")
     ]),
@@ -76,8 +78,11 @@ app.layout = html.Div(className='content', children=[
                     'justify-content': 'center'
                 },
                 children = [
-                    dcc.Tab(label='Accueil', children=[
-                        html.Div([
+                    dcc.Tab(label='Accueil',
+                            selected_className='tab-selected', 
+                            children=[
+                        html.Div(className='text', 
+                                 children=[
                             html.P(texts.HOME_DESCRIPTION)
                         ],
                         style={
@@ -88,7 +93,9 @@ app.layout = html.Div(className='content', children=[
                             'align-content': 'center',
                         }),
                 ]),
-                dcc.Tab(label='Douleur et visites', children=[
+                dcc.Tab(label='Douleur et visites',
+                        selected_className='tab-selected',
+                        children=[
                     dcc.Graph(
                         id='heatmap_section_1',
                         className='graph',
@@ -105,7 +112,9 @@ app.layout = html.Div(className='content', children=[
                         )
                     )
                 ]),
-                dcc.Tab(label='complétion des activités', children=[
+                dcc.Tab(label='complétion des activités', 
+                        selected_className='tab-selected',
+                        children=[
                     dcc.Graph(
                         id='bubble_chart_section_1',
                         className='graph',
@@ -124,18 +133,14 @@ app.layout = html.Div(className='content', children=[
                     )
                 ])
                 ,
-                dcc.Tab(label='Notes et hospitalisations', children=[
-                    html.Div([
+                dcc.Tab(label='Notes et hospitalisations', 
+                        selected_className='tab-selected',
+                        children=[
+                    html.Div(className='text', 
+                             children=[
                         html.P(texts.SECTION_2_GROUPED_BAR_HEADER)
-                    ],
-                    style={
-                        'font-size': '17px',
-                        'padding': '20px',
-                        'text-align': 'center',
-                        'display': 'flex',
-                        'align-content': 'center',
-                        'margin-left': '5%'
-                    }),
+                    ]),
+                    html.Hr(),
                     html.Div([
                         html.P(
                             texts.SECTION_2_GROUPED_BAR_1_DESCRIPTION, 
@@ -196,21 +201,30 @@ app.layout = html.Div(className='content', children=[
                     }),
                 ])
                 ,
-                dcc.Tab(label='Chutes et hospitalisations', children=[
-                    dcc.Graph(
-                        id='univariate_scatter_plot_section_2',
-                        className='graph',
-                        figure=section_2_univariate_scatter_plot.get_figure(dataUnivariateChart),
-                        config=dict(
-                            scrollZoom=False,
-                            showTips=False,
-                            showAxisDragHandles=False,
-                            doubleClick=False,
-                            displayModeBar=False
-                        )
-                    )
-                ])
-                ,
+                dcc.Tab(label='Chutes et hospitalisations', 
+                        selected_className='tab-selected',
+                        children=[
+                        html.Div(className='text', 
+                             children=[
+                                html.P(texts.SECTION_2_UNIVARIATE_SCATTER_PLOT_HEADER),
+                        dcc.Graph(
+                            id='univariate_scatter_plot_section_2',
+                            className='graph',
+                            figure=section_2_univariate_scatter_plot.get_figure(dataUnivariateChart),
+                            config=dict(
+                                scrollZoom=False,
+                                showTips=False,
+                                showAxisDragHandles=False,
+                                doubleClick=False,
+                                displayModeBar=False
+                            )
+                        )]),
+                        html.Div(className='text', 
+                                children=[
+                                    html.P(texts.SECTION_2_UNIVARIATE_SCATTER_PLOT_DESCRIPTION)
+                                ]
+                        ),
+                ]),
                 dcc.Tab(label='Annulation de visites', children=[
                     html.Div([
                         html.P(texts.SECTION_3_GROUPED_BAR_HEADER)
