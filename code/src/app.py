@@ -93,30 +93,35 @@ app.layout = html.Div(className='content', children=[
                             'align-content': 'center',
                         }),
                 ]),
-                dcc.Tab(label='Douleur et visites',
+                dcc.Tab(label='Douleur et visites', 
                         selected_className='tab-selected',
                         children=[
-                    dcc.Graph(
-                        id='heatmap_section_1',
-                        className='graph',
-                        figure=section_1_bubble_chart.get_figure(dataBubbleChart1),
-                        config=dict(
-                            scrollZoom=False,
-                            showTips=False,
-                            showAxisDragHandles=False,
-                            doubleClick=False,
-                            displayModeBar=False
+                        html.Div(className='text', 
+                             children=[
+                                html.P(texts.SECTION_1_BUBBLE_CHART_HEADER),
+                        dcc.Graph(
+                            id='bubble_chart_section_1',
+                            className='graph',
+                            figure=section_1_bubble_chart.get_figure(dataBubbleChart1),
+                            config=dict(
+                                scrollZoom=False,
+                                showTips=False,
+                                showAxisDragHandles=False,
+                                doubleClick=False,
+                                displayModeBar=False
+                            )
+                        )]),
+                        html.Div(className='text', 
+                                children=[
+                                    html.P(texts.SECTION_1_BUBBLE_CHART_DESCRIPTION)
+                                ]
                         ),
-                        style=dict(
-                            height='500px',
-                        )
-                    )
                 ]),
                 dcc.Tab(label='complétion des activités', 
                         selected_className='tab-selected',
                         children=[
                     dcc.Graph(
-                        id='bubble_chart_section_1',
+                        id='heatmap_section_1',
                         className='graph',
                         figure=section_1_heatmap.get_figure(dataHeatmapChart1),
                         config=dict(
