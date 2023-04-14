@@ -84,11 +84,13 @@ button:hover, button:active {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(9, 9, 86);
+    background-color: rgb(14, 14, 111);
+    background-image: linear-gradient(to right, #092ba6, #1150b5);
+    border-bottom: solid 2px #092ba6;
 }
 
 .header h1 {
-    color: orange;
+    color: rgb(255, 145, 0);
     font-size: 56px;
     margin: 0;
     font-weight: normal;
@@ -97,6 +99,36 @@ button:hover, button:active {
 .header h2 {
     color: #ffffff;
     font-weight: normal;
+}
+
+.selecter {
+    justify-content: space-between;
+    background-color: rgb(14, 14, 111);
+    background-image: linear-gradient(to bottom, #092ba6, #1150b5);
+    color: #ffffff;
+    padding: 10px;
+    width: 13%;
+    position: fixed;
+    height: 100%;
+}
+
+.people-checkbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    padding: 10px;
+}
+
+
+.main {
+    display: flex;
+}
+
+.tabs {
+    width: 100%;
+    margin-left: 15%;
 }
 
 .tab {
