@@ -221,7 +221,7 @@ app.layout = html.Div(className='content', children=[
                         dcc.Graph(
                             id='univariate_scatter_plot_section_2',
                             className='graph',
-                            #figure=section_2_univariate_scatter_plot.get_figure(dataUnivariateChart),
+                            figure=section_2_univariate_scatter_plot.get_figure(dataUnivariateChart),
                             config=dict(
                                 scrollZoom=False,
                                 showTips=False,
@@ -318,8 +318,8 @@ app.layout = html.Div(className='content', children=[
      dash.dependencies.Output('grouped_bar_chart_1_section_2', 'figure'),
      dash.dependencies.Output('grouped_bar_chart_2_section_2', 'figure'),
      dash.dependencies.Output('univariate_scatter_plot_section_2', 'figure'),
-     dash.dependencies.Output('univariate_scatter_plot_section_3_1', 'figure'),
-     dash.dependencies.Output('univariate_scatter_plot_section_3_2', 'figure')], # Add the output component with different ids
+     dash.dependencies.Output('grouped_bar_chart_section_3_1', 'figure'),
+     dash.dependencies.Output('grouped_bar_chart_section_3_2', 'figure')], # Add the output component with different ids
     dash.dependencies.Input('people-checkbox', 'value')
 )
 def update_graph(people):
@@ -343,5 +343,5 @@ def update_graph(people):
            section_2_grouped_bar_chart.get_figure_hospitalization(dataFrameGroupedBarChart1),
            section_2_grouped_bar_chart.get_figure_falls(dataFrameGroupedBarChart2),
            section_2_univariate_scatter_plot.get_figure(dataUnivariateChart),
-           section_3_univariate_scatter_plot.get_figure_1(dataUnivariateChart1),
-           section_3_univariate_scatter_plot.get_figure_2(dataUnivariateChart2)]
+           section_3_grouped_bar_chart.get_figure_1(dataUnivariateChart1),
+           section_3_grouped_bar_chart.get_figure_2(dataUnivariateChart2)]
