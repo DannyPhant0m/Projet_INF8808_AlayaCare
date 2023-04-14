@@ -43,7 +43,7 @@ def get_grouped_bar_notes_hover_template():
     '''
 
     return ("<b>Nom du Patient</b>: %{x}<br>" +
-            '<b>Nombre de notes:</b>' + "<b> %{y}<br>"
+            '<b>Nombre de notes:</b>' + " %{y}<br>"
             '<extra></extra>')
     
     
@@ -57,7 +57,7 @@ def get_grouped_bar_falls_hover_template():
     '''
 
     return ("<b>Nom du Patient</b>: %{x}<br>" +
-            '<b>Nombre de chutes:</b>' + "<b> %{y}<br>"
+            '<b>Nombre de chutes:</b>' + " %{y}<br>"
             '<extra></extra>')
 
 def get_grouped_bar_hospitalization_hover_template():
@@ -70,5 +70,57 @@ def get_grouped_bar_hospitalization_hover_template():
     '''
 
     return ("<b>Nom du Patient</b>: %{x}<br>" +
-            '<b>Nombre d\'hospitalisations:</b>' + "<b> %{y}<br>"
+            '<b>Nombre d\'hospitalisations:</b>' + " %{y}<br>"
+            '<extra></extra>')
+    
+def get_grouped_bar_cancellations_percentage_hover_template():
+    '''
+        Sets the template for the hover tooltips in the grouped bar charts.
+
+        Contains three labels, followed by their corresponding
+        value, separated by a colon : Patient name, and the number associated.
+
+    '''
+
+    return ("<b>Nom du Patient</b>: %{x}<br>" +
+            '<b>Pourcentage de visites annulées:</b>' + " %{y:.2f} %<br>"
+            '<extra></extra>')
+    
+def get_grouped_bar_cancellations_hover_template():
+    '''
+        Sets the template for the hover tooltips in the grouped bar charts.
+
+        Contains three labels, followed by their corresponding
+        value, separated by a colon : Patient name, and the number associated.
+
+    '''
+
+    return ("<b>Nom du Patient</b>: %{x}<br>" +
+            '<b>Nombre de visites annulées:</b>' + " %{y}<br>"
+            '<extra></extra>')
+
+def get_grouped_bar_pain_hover_template():
+    '''
+        Sets the template for the hover tooltips in the grouped bar charts.
+
+        Contains three labels, followed by their corresponding
+        value, separated by a colon : Patient name, and the number associated.
+
+    '''
+
+    return ("<b>Nom du Patient</b>: %{x}<br>" +
+            '<b>Pourcentage de visites avec mention de douleur:</b>' + " %{y:.2f} %<br>"
+            '<extra></extra>')
+    
+def get_grouped_bar_activities_hover_template():
+    '''
+        Sets the template for the hover tooltips in the grouped bar charts.
+
+        Contains three labels, followed by their corresponding
+        value, separated by a colon : Patient name, and the number associated.
+
+    '''
+
+    return ("<b>Nom du Patient</b>: %{x}<br>" +
+            '<b>Nombre d\'activités complétées:</b>' + " %{y}<br>"
             '<extra></extra>')

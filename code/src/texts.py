@@ -38,7 +38,7 @@ HOME_DESCRIPTION = " Texte à completer "
     Section 2.2 : Nombre de notes et d'hospitalisations
 '''
 
-SECTION_2_GROUPED_BAR_HEADER = " Ce section présente la corrélation possible entre les notes prises sur un patient comparée au nombre de chutes et d'hospitalisation \n"
+SECTION_2_GROUPED_BAR_HEADER = " Ce section présente la corrélation possible entre les notes prises sur un patient comparées aux nombre de chutes et d'hospitalisation \n"
 
 SECTION_2_GROUPED_BAR_1_DESCRIPTION = " Ce graphique à barres groupées permet de distinguer rapidement la disparité entre les notes prises et le nombre d'hospitalisations "
 
@@ -48,6 +48,12 @@ SECTION_2_GROUPED_BAR_2_DESCRIPTION = " Ce graphique à barres groupées permet 
 '''
     Section 3: Relations avec l'annulation de visites
 '''
+
+SECTION_3_GROUPED_BAR_HEADER = " Ce section présente la corrélation possible entre les annulations de visites d'un patient comparés aux mentions de douleurs et aux activités de la vie quotidienne complétées \n"
+
+SECTION_3_GROUPED_BAR_1_DESCRIPTION = " Ce graphique à barres groupées permet de distinguer rapidement la disparité entre le pourcentage de visites annulées et le pourcentage de visites avec mention de douleur "
+
+SECTION_3_GROUPED_BAR_2_DESCRIPTION = " Ce graphique à barres groupées permet de distinguer rapidement la disparité entre le nombre de visites annulées et le nombre total d'activités de la vie quotidienne complétées "
 
 
 

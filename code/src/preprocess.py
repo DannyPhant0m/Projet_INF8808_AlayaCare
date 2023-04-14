@@ -81,19 +81,26 @@ def getGroupedBarFallCount(dataframe):
 
 def getCancellationAndPainRelation(dataframe):
     
-    dataframe = dataframe[['PATIENT_ID','CANCELLATION_COUNTS','HAS_PAIN_MENTION']].copy()
+    dataframe = dataframe[['PATIENT_ID','CANCELLATION_COUNTS','HAS_PAIN_MENTION','VISIT_COUNTS']].copy()
     dataframe = dataframe.groupby('PATIENT_ID', as_index=False).sum()
+    
+    pain_percentage = []
+    for index, pain in enumerate(dataframe['HAS_PAIN_MENTION']):
+        cancellations_count = dataframe['CANCELLATION_COUNTS'][index]
+        visits_count = dataframe['VISIT_COUNTS'][index]
+        pain_percentage.append(pain / (visits_count - cancellations_count) * 100)
+    dataframe['HAS_PAIN_MENTION'] = pain_percentage
+    
+    cancellations_percentage = []
+    for index, cancellation in enumerate(dataframe['CANCELLATION_COUNTS']):
+        cancellations_percentage.append(cancellation / dataframe['VISIT_COUNTS'][index] * 100)
+    dataframe['CANCELLATION_COUNTS'] = cancellations_percentage
     
     return dataframe
 
 def getCancellationAndAdlRelation(dataframe):
     
-    dataframe = dataframe[['PATIENT_ID','CANCELLATION_COUNTS','ADL_COMPLETION_PERCENTAGE']].copy()
+    dataframe = dataframe[['PATIENT_ID','CANCELLATION_COUNTS','TOTAL_COMPLETED_ADLS']].copy()
     dataframe = dataframe.groupby('PATIENT_ID', as_index=False).sum()
-
-    new_adl = []
-    for adl in dataframe['ADL_COMPLETION_PERCENTAGE']:
-        new_adl.append(adl / 10)
-    dataframe['ADL_COMPLETION_PERCENTAGE'] = new_adl
     
     return dataframe

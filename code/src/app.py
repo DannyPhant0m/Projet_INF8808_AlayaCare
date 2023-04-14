@@ -22,7 +22,7 @@ import section_1_heatmap
 import section_1_bubble_chart
 import section_2_grouped_bar_chart
 import section_2_univariate_scatter_plot
-import section_3_univariate_scatter_plot
+import section_3_grouped_bar_chart
 
 import texts
 
@@ -212,38 +212,75 @@ app.layout = html.Div(className='content', children=[
                 ])
                 ,
                 dcc.Tab(label='Annulation de visites', children=[
-                    dcc.Graph(
-                        id='univariate_scatter_plot_section_3_1',
-                        className='graph',
-                        figure=section_3_univariate_scatter_plot.get_figure_1(dataUnivariateChart1),
-                        config=dict(
-                            scrollZoom=False,
-                            showTips=False,
-                            showAxisDragHandles=False,
-                            doubleClick=False,
-                            displayModeBar=False
+                    html.Div([
+                        html.P(texts.SECTION_3_GROUPED_BAR_HEADER)
+                    ],
+                    style={
+                        'font-size': '17px',
+                        'padding': '20px',
+                        'text-align': 'center',
+                        'display': 'flex',
+                        'align-content': 'center',
+                        'margin-left': '5%'
+                    }),
+                    html.Div([
+                        html.P(
+                            texts.SECTION_3_GROUPED_BAR_1_DESCRIPTION, 
+                            style={
+                                'font-size': '15px',
+                                'padding': '20px',
+                                'width': '350px'
+                            }
                         ),
-                        style=dict(
-                            height='500px',
-                            width='800px'
-                        )
-                    ),
-                    dcc.Graph(
-                        id='univariate_scatter_plot_section_3_2',
-                        className='graph',
-                        figure=section_3_univariate_scatter_plot.get_figure_2(dataUnivariateChart2),
-                        config=dict(
-                            scrollZoom=False,
-                            showTips=False,
-                            showAxisDragHandles=False,
-                            doubleClick=False,
-                            displayModeBar=False
+                        dcc.Graph(
+                            id='grouped_bar_chart_section_3_1',
+                            className='graph',
+                            figure=section_3_grouped_bar_chart.get_figure_1(dataUnivariateChart1),
+                            config=dict(
+                                scrollZoom=False,
+                                showTips=False,
+                                showAxisDragHandles=False,
+                                doubleClick=False,
+                                displayModeBar=False
+                            ),
+                            style=dict(
+                                height='500px',
+                                width='800px'
+                            )
                         ),
-                        style=dict(
-                            height='500px',
-                            width='800px'
+                    ],
+                    style={
+                        'display': 'flex'
+                    }),
+                    html.Div([
+                        html.P(
+                            texts.SECTION_3_GROUPED_BAR_2_DESCRIPTION, 
+                            style={
+                                'font-size': '15px',
+                                'padding': '20px',
+                                'width': '350px'
+                            }
+                        ),                        
+                        dcc.Graph(
+                            id='grouped_bar_chart_section_3_2',
+                            className='graph',
+                            figure=section_3_grouped_bar_chart.get_figure_2(dataUnivariateChart2),
+                            config=dict(
+                                scrollZoom=False,
+                                showTips=False,
+                                showAxisDragHandles=False,
+                                doubleClick=False,
+                                displayModeBar=False
+                            ),
+                            style=dict(
+                                height='500px',
+                                width='800px'
+                            )
                         )
-                    )
+                    ],
+                    style={
+                        'display': 'flex'
+                    }),
                 ])
                 ,
             ])
