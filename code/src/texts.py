@@ -28,7 +28,9 @@ HOME_DESCRIPTION = " AlayaCare est une compagnie responsable par un logiciel de 
     Section 1.1: Évolution de la relation entre le douleur et le nombre de visites 
 '''
 
+SECTION_1_BUBBLE_CHART_HEADER = " Cette section présente la corrélation possible entre la douleur et le nombre de visites de patients sur une période de 28 jours \n"
 
+SECTION_1_BUBBLE_CHART_DESCRIPTION = " Ce graphique permet de distinguer rapidement l'évolution de la douleur et le nombre de visites au cours des 28 jours "
 
 
 
