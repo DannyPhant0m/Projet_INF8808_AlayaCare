@@ -72,17 +72,12 @@ app.layout = html.Div(className='content', children=[
             ]),
             html.Div(className='tabs', children=[
             dcc.Tabs(
-                style={
-                    'position': 'relative',
-                    'height': '100%',
-                    'width': '100%',
-                    'display': 'flex',
-                    'alignItems': 'center',
-                }, 
+                className='tabs-container',
                 content_style={
                     'align-self': 'center',                    
                     'padding': '20px',
-                    'justify-content': 'center'
+                    'justify-content': 'center',
+                    'margin-top': '20px',
                 },
                 children = [
                     dcc.Tab(label='Accueil',
@@ -124,9 +119,12 @@ app.layout = html.Div(className='content', children=[
                                 ]
                         ),
                 ]),
-                dcc.Tab(label='complétion des activités', 
+                dcc.Tab(label='Complétion des activités', 
                         selected_className='tab-selected',
                         children=[
+                            html.Div(className='text',
+                                children=[
+                                    html.P(texts.SECTION_1_2_HEATMAP_1_DESCRIPTION),
                     dcc.Graph(
                         id='heatmap_section_1',
                         className='graph',
@@ -143,6 +141,7 @@ app.layout = html.Div(className='content', children=[
                             width='1300px'
                         )
                     )
+                ]),
                 ])
                 ,
                 dcc.Tab(label='Notes et hospitalisations', 
@@ -229,12 +228,9 @@ app.layout = html.Div(className='content', children=[
                                 doubleClick=False,
                                 displayModeBar=False
                             )
-                        )]),
-                        html.Div(className='text', 
-                                children=[
-                                    html.P(texts.SECTION_2_UNIVARIATE_SCATTER_PLOT_DESCRIPTION)
-                                ]
                         ),
+                        html.P(texts.SECTION_2_UNIVARIATE_SCATTER_PLOT_DESCRIPTION)
+                    ])
                 ]),
                 dcc.Tab(label='Annulation de visites', children=[
                     html.Div([
@@ -313,8 +309,8 @@ app.layout = html.Div(className='content', children=[
 ])
 
 @app.callback(
-    [dash.dependencies.Output('heatmap_section_1', 'figure'),
-     dash.dependencies.Output('bubble_chart_section_1', 'figure'),
+    [dash.dependencies.Output('bubble_chart_section_1', 'figure'),
+     dash.dependencies.Output('heatmap_section_1', 'figure'),
      dash.dependencies.Output('grouped_bar_chart_1_section_2', 'figure'),
      dash.dependencies.Output('grouped_bar_chart_2_section_2', 'figure'),
      dash.dependencies.Output('univariate_scatter_plot_section_2', 'figure'),
