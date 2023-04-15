@@ -82,11 +82,14 @@ button:hover, button:active {
 
 .header {
     display: flex;
-    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    justify-content: space-around;
     align-items: center;
     background-color: rgb(14, 14, 111);
     background-image: linear-gradient(to right, #092ba6, #1150b5);
     border-bottom: solid 2px #092ba6;
+    z-index:100;
 }
 
 .header h1 {
@@ -109,7 +112,8 @@ button:hover, button:active {
     padding: 10px;
     width: 13%;
     position: fixed;
-    height: 100%;
+    overflow: auto;
+    height: 150%;
 }
 
 .people-checkbox {
@@ -124,11 +128,22 @@ button:hover, button:active {
 
 .main {
     display: flex;
+    padding-top: 6.8%;
 }
 
 .tabs {
     width: 100%;
     margin-left: 15%;
+    top: 0;
+    display: inline-block;
+    position: relative;
+    align-items: center;
+}
+
+.tabs-container {
+    position: fixed;
+    z-index:50;
+    width: 84%;
 }
 
 .tab {
