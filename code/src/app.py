@@ -30,6 +30,9 @@ import template
 
 
 app = dash.Dash()
+
+server = app.server
+
 app.title = 'AlayaCare'
 
 dataframe = pd.read_csv('./assets/data/notes.csv')
