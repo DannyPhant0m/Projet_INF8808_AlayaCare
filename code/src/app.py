@@ -66,6 +66,10 @@ app.layout = html.Div(className='content', children=[
         className='main', 
         children=[
             html.Aside(className='selecter', children=[
+                html.Div(className='sideBarTitle', 
+                                 children=[
+                            html.P('Choix des patients: ')
+                        ]),
                 dcc.Checklist(
                     className='people-checkbox',
                     id='people-checkbox',
@@ -88,12 +92,15 @@ app.layout = html.Div(className='content', children=[
                             children=[
                         html.Div(className='text', 
                                  children=[
-                            html.P(texts.HOME_DESCRIPTION)
+                            html.P(texts.HOME_DESCRIPTION,
+                                   style={
+                                    'font-size': '17px',
+                                    'text-align': 'justify',
+                                    'white-space': 'pre-wrap',
+                            })
                         ],
                         style={
-                            'font-size': '17px',
-                            'padding': '20px',
-                            'text-align': 'center',
+                            'margin-top': '5%',
                             'display': 'flex',
                             'align-content': 'center',
                         }),
@@ -103,48 +110,59 @@ app.layout = html.Div(className='content', children=[
                     children=[
                         html.Div(className='text', 
                             children=[
-                                html.P(texts.SECTION_1_BUBBLE_CHART_HEADER),
-                        dcc.Graph(
-                            id='bubble_chart_section_1',
-                            className='graph',
-                            figure=section_1_bubble_chart.get_figure(dataBubbleChart1),
-                            config=dict(
-                                scrollZoom=False,
-                                showTips=False,
-                                showAxisDragHandles=False,
-                                doubleClick=False,
-                                displayModeBar=False
-                            )
-                        )]),
-                        html.Div(className='text', 
-                                children=[
-                                    html.P(texts.SECTION_1_BUBBLE_CHART_DESCRIPTION)
-                                ]
-                        ),
+                                html.P(className='sectionHeader', children=[texts.SECTION_1_BUBBLE_CHART_HEADER])
+                            ]),
+                        html.Div([        
+                            html.P(className='sectionDescription', children=[texts.SECTION_1_BUBBLE_CHART_DESCRIPTION]),
+                            dcc.Graph(
+                                id='bubble_chart_section_1',
+                                className='graph',
+                                figure=section_1_bubble_chart.get_figure(dataBubbleChart1),
+                                config=dict(
+                                    scrollZoom=False,
+                                    showTips=False,
+                                    showAxisDragHandles=False,
+                                    doubleClick=False,
+                                    displayModeBar=False
+                                ),                    
+                                style=dict(
+                                    height='500px',
+                                    width='50%'
+                                )
+                            )],
+                            style={
+                                'display': 'flex'
+                            })
                 ]),
                 dcc.Tab(label='Complétion des activités', 
                         selected_className='tab-selected',
                         children=[
                             html.Div(className='text',
                                 children=[
-                                    html.P(texts.SECTION_1_2_HEATMAP_1_DESCRIPTION),
-                    dcc.Graph(
-                        id='heatmap_section_1',
-                        className='graph',
-                        figure=section_1_heatmap.get_figure(dataHeatmapChart1),
-                        config=dict(
-                            scrollZoom=False,
-                            showTips=False,
-                            showAxisDragHandles=False,
-                            doubleClick=False,
-                            displayModeBar=False
-                        ),                    
-                        style=dict(
-                            height='500px',
-                            width='1300px'
-                        )
-                    )
-                ]),
+                                    html.P(className='sectionHeader', children=[texts.SECTION_1_2_HEATMAP_1_HEADER])
+                            ]),
+                            html.Div([
+                                html.P(className='sectionDescription', children=[texts.SECTION_1_BUBBLE_CHART_DESCRIPTION]),
+                                dcc.Graph(
+                                    id='heatmap_section_1',
+                                    className='graph',
+                                    figure=section_1_heatmap.get_figure(dataHeatmapChart1),
+                                    config=dict(
+                                        scrollZoom=False,
+                                        showTips=False,
+                                        showAxisDragHandles=False,
+                                        doubleClick=False,
+                                        displayModeBar=False
+                                    ),                    
+                                    style=dict(
+                                        height='500px',
+                                        width='1100px'
+                                    )
+                                )
+                            ],
+                            style={
+                                'display': 'flex'
+                            }),
                 ])
                 ,
                 dcc.Tab(label='Notes et hospitalisations', 
@@ -152,17 +170,10 @@ app.layout = html.Div(className='content', children=[
                         children=[
                     html.Div(className='text', 
                              children=[
-                        html.P(texts.SECTION_2_GROUPED_BAR_HEADER)
+                        html.P(className='sectionHeader', children=[texts.SECTION_2_GROUPED_BAR_HEADER])
                     ]),
                     html.Div([
-                        html.P(
-                            texts.SECTION_2_GROUPED_BAR_1_DESCRIPTION, 
-                            style={
-                                'font-size': '15px',
-                                'padding': '20px',
-                                'width': '350px'
-                            }
-                        ),
+                        html.P(className='sectionDescription', children=[texts.SECTION_2_GROUPED_BAR_1_DESCRIPTION]),
                         dcc.Graph(
                             id='grouped_bar_chart_1_section_2',
                             className='graph',
@@ -184,14 +195,7 @@ app.layout = html.Div(className='content', children=[
                         'display': 'flex'
                     }),
                     html.Div([
-                        html.P(
-                            texts.SECTION_2_GROUPED_BAR_2_DESCRIPTION, 
-                            style={
-                                'font-size': '15px',
-                                'padding': '20px',
-                                'width': '350px'
-                            }
-                        ),
+                        html.P(className='sectionDescription', children=[texts.SECTION_2_GROUPED_BAR_2_DESCRIPTION]),
                         dcc.Graph(
                             id='grouped_bar_chart_2_section_2',
                             className='graph',
@@ -219,43 +223,33 @@ app.layout = html.Div(className='content', children=[
                         children=[
                         html.Div(className='text', 
                              children=[
-                                html.P(texts.SECTION_2_UNIVARIATE_SCATTER_PLOT_HEADER),
-                        dcc.Graph(
-                            id='univariate_scatter_plot_section_2',
-                            className='graph',
-                            figure=section_2_univariate_scatter_plot.get_figure(dataUnivariateChart),
-                            config=dict(
-                                scrollZoom=False,
-                                showTips=False,
-                                showAxisDragHandles=False,
-                                doubleClick=False,
-                                displayModeBar=False
-                            )
-                        ),
-                        html.P(texts.SECTION_2_UNIVARIATE_SCATTER_PLOT_DESCRIPTION)
-                    ])
+                                html.P(className='sectionHeader', children=[texts.SECTION_2_UNIVARIATE_SCATTER_PLOT_HEADER])
+                        ]),
+                        html.Div([
+                            html.P(className='sectionDescription', children=[texts.SECTION_2_UNIVARIATE_SCATTER_PLOT_DESCRIPTION]),
+                            dcc.Graph(
+                                id='univariate_scatter_plot_section_2',
+                                className='graph',
+                                figure=section_2_univariate_scatter_plot.get_figure(dataUnivariateChart),
+                                config=dict(
+                                    scrollZoom=False,
+                                    showTips=False,
+                                    showAxisDragHandles=False,
+                                    doubleClick=False,
+                                    displayModeBar=False
+                                )
+                            ),
+                        ],
+                        style={
+                            'display': 'flex'
+                        }),
                 ]),
                 dcc.Tab(label='Annulation de visites', children=[
                     html.Div([
-                        html.P(texts.SECTION_3_GROUPED_BAR_HEADER)
-                    ],
-                    style={
-                        'font-size': '17px',
-                        'padding': '20px',
-                        'text-align': 'center',
-                        'display': 'flex',
-                        'align-content': 'center',
-                        'margin-left': '5%'
-                    }),
+                        html.P(className='sectionHeader', id='section3', children=[texts.SECTION_3_GROUPED_BAR_HEADER])
+                    ]),
                     html.Div([
-                        html.P(
-                            texts.SECTION_3_GROUPED_BAR_1_DESCRIPTION, 
-                            style={
-                                'font-size': '15px',
-                                'padding': '20px',
-                                'width': '350px'
-                            }
-                        ),
+                        html.P(className='sectionDescription', children=[texts.SECTION_3_GROUPED_BAR_1_DESCRIPTION]),
                         dcc.Graph(
                             id='grouped_bar_chart_section_3_1',
                             className='graph',
@@ -269,22 +263,16 @@ app.layout = html.Div(className='content', children=[
                             ),
                             style=dict(
                                 height='500px',
-                                width='800px'
+                                width='850px'
                             )
                         ),
                     ],
                     style={
-                        'display': 'flex'
+                        'display': 'flex',
+                        'margin-left': '8%'
                     }),
                     html.Div([
-                        html.P(
-                            texts.SECTION_3_GROUPED_BAR_2_DESCRIPTION, 
-                            style={
-                                'font-size': '15px',
-                                'padding': '20px',
-                                'width': '350px'
-                            }
-                        ),                        
+                        html.P(className='sectionDescription', children=[texts.SECTION_3_GROUPED_BAR_2_DESCRIPTION]),                        
                         dcc.Graph(
                             id='grouped_bar_chart_section_3_2',
                             className='graph',
@@ -298,12 +286,13 @@ app.layout = html.Div(className='content', children=[
                             ),
                             style=dict(
                                 height='500px',
-                                width='800px'
+                                width='850px'
                             )
                         )
                     ],
                     style={
-                        'display': 'flex'
+                        'display': 'flex',
+                        'margin-left': '8%'
                     })
                 ]),
             ])

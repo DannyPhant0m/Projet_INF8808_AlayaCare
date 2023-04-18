@@ -45,8 +45,8 @@ button {
 }
 
 button:hover, button:active {
-	background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
-	background-color:#f6f6f6;
+    background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+    background-color:#f6f6f6;
 }
 
 .content {
@@ -86,9 +86,7 @@ button:hover, button:active {
     width: 100%;
     justify-content: space-around;
     align-items: center;
-    background-color: rgb(14, 14, 111);
-    background-image: linear-gradient(to right, #092ba6, #1150b5);
-    border-bottom: solid 2px #092ba6;
+    background-image: linear-gradient(to right, #3358db, #6e9fee);
     z-index:100;
 }
 
@@ -106,11 +104,10 @@ button:hover, button:active {
 
 .selecter {
     justify-content: space-between;
-    background-color: rgb(14, 14, 111);
-    background-image: linear-gradient(to bottom, #092ba6, #1150b5);
+    background-image: linear-gradient(to bottom, #515358, #9297a0);
     color: #ffffff;
     padding: 10px;
-    width: 13%;
+    width: 10%;
     position: fixed;
     overflow: auto;
     height: 150%;
@@ -120,7 +117,7 @@ button:hover, button:active {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    position: fixed;
+    margin-top: 5%;
     width: 100%;
     padding: 10px;
 }
@@ -181,4 +178,34 @@ button:hover, button:active {
     align-content: center;
     margin-left: 5%;
     margin-right: 5%;
+}
+
+.sideBarTitle{
+    font-size: 17px;
+    margin-top: 5%;
+    display: flex;
+    align-content: center;
+    margin-left: 10px;
+}
+
+.sectionHeader{
+    padding: 10px;
+    margin-top: 5%;
+    width: 81%;
+    margin-left: 3%;
+}
+
+.sectionDescription{
+    font-size: 15px;
+    padding: 20px;
+    width: 350px;
+}
+
+#section3{
+    font-size: 17px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    align-content: center;
+    margin-left: 5%;
 }
