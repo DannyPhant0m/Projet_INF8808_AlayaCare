@@ -36,6 +36,8 @@ app = dash.Dash(__name__, assets_folder='assets')
 
 server = app.server
 
+app.config.suppress_callback_exceptions = True
+
 app.title = 'AlayaCare'
 
 dataframe = pd.read_csv('./assets/data/notes.csv')
@@ -305,19 +307,18 @@ app.layout = html.Div(className='content', children=[
 ])
 
 @app.callback(
-    [Output('bubble_chart_section_1', 'figure'),
-     Output('heatmap_section_1', 'figure'),
-     Output('grouped_bar_chart_1_section_2', 'figure'),
-     Output('grouped_bar_chart_2_section_2', 'figure'),
-     Output('univariate_scatter_plot_section_2', 'figure'),
-     Output('grouped_bar_chart_section_3_1', 'figure'),
-     Output('grouped_bar_chart_section_3_2', 'figure')], # Add the output component with different ids
+    Output('bubble_chart_section_1', 'figure'),
+    Output('heatmap_section_1', 'figure'),
+    Output('grouped_bar_chart_1_section_2', 'figure'),
+    Output('grouped_bar_chart_2_section_2', 'figure'),
+    Output('univariate_scatter_plot_section_2', 'figure'),
+    Output('grouped_bar_chart_section_3_1', 'figure'),
+    Output('grouped_bar_chart_section_3_2', 'figure'), # Add the output component with different ids
     Input('people-checkbox', 'value')
 )
 def update_graph(people):
     # Filter the dataset based on the selected people
     df_filtered = dataframe2[dataframe2['PATIENT_ID'].isin(people)]
-
     
     dataFrameGroupedBarChart1 = preprocess.getGroupedBarHospitalizationCount(df_filtered)
     dataFrameGroupedBarChart2 = preprocess.getGroupedBarFallCount(df_filtered)
@@ -337,3 +338,6 @@ def update_graph(people):
            section_2_univariate_scatter_plot.get_figure(dataUnivariateChart),
            section_3_grouped_bar_chart.get_figure_1(dataUnivariateChart1),
            section_3_grouped_bar_chart.get_figure_2(dataUnivariateChart2)]
+    
+if __name__ == '__main__':
+    app.run_server(debug=True)
