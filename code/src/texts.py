@@ -59,8 +59,10 @@ SECTION_2_UNIVARIATE_SCATTER_PLOT_HEADER = " Cette section présente la corréla
 
 SECTION_2_UNIVARIATE_SCATTER_PLOT_DESCRIPTION = " Ce graphique permet de " \
 "distinguer la possible corrélation entre les jours de chute et les jours " \
-"d'hospitalisation vers le temps pendant les 28 derniers jours. "
-
+"d'hospitalisation vers le temps pendant les 28 derniers jours. \n" \
+"En raison du manque de données et du petit nombre de personnes " \
+"dont nous disposons d'informations, nous ne pouvons pas apprécier "\
+"de corrélation entre les jours de chute et les jours d'hospitalisation."
 
 
 '''
