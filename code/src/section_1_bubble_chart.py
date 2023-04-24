@@ -4,8 +4,6 @@
 import plotly.express as px
 import hover_template
 
-from template import THEME
-
 def get_figure(data):
     '''
         Generates the bubble plot.

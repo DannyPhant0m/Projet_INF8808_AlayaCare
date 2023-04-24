@@ -29,8 +29,6 @@ import texts
 import plotly.io as pio
 pio.renderers.default = 'iframe'
 
-import template
-
 
 app = dash.Dash(__name__, assets_folder='assets')
 
@@ -56,11 +54,6 @@ dataUnivariateChart = preprocess.getFallsAndHospitalizationTimeline(dataframe2)
 
 dataUnivariateChart1 = preprocess.getCancellationAndPainRelation(dataframe2)
 dataUnivariateChart2 = preprocess.getCancellationAndAdlRelation(dataframe2) 
-
-# We need to add template
-
-# template.create_custom_theme()
-# template.set_default_theme()
 
 app.layout = html.Div(className='content', children=[ 
     html.Link(rel='stylesheet', href='/assets/style.css'),

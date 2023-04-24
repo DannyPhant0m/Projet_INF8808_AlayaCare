@@ -6,8 +6,6 @@ import plotly.graph_objects as go
 
 import hover_template
 
-from template import THEME
-
 def get_figure_hospitalization(data):
     '''
         Generates the grouped chart using the given data.

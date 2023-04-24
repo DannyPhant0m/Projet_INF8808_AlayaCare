@@ -1,11 +1,8 @@
 '''
     Contains some functions related to the creation of the univariate scatter plot of the third section.
 '''
-import plotly.express as px
 import plotly.graph_objects as go
 import hover_template
-
-from template import THEME
 
 def get_figure_1(data):
     '''
