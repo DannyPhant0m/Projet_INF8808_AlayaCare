@@ -210,7 +210,6 @@ button:hover, button:active {
     text-align: center;
     display: flex;
     align-content: center;
-    margin-left: 5%;
 }
 
 #grouped_bar_chart_section_3_1, #grouped_bar_chart_section_3_2, #grouped_bar_chart_2_section_2, #grouped_bar_chart_1_section_2{

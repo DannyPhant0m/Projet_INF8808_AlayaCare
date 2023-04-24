@@ -39,11 +39,11 @@ def get_figure_1(data):
         yaxis=dict(title='Nombre'),
         legend_title='Légende',
         title={
-            'text': "<b>Pourcentage de visites annulées versus pourcentage de visites avec mention<br>de douleur pour un patient au cours de 28 jours<b>",
+            'text': "<b>Pourcentage de visites annulées versus de visites<br> avec mentionde douleur au cours de 28 jours<b>",
             'font': {
                 'size': 15,
             },
-            'x': 0.4,
+            'x': 0.34,
             'xanchor': 'center',
         },
     )
@@ -86,11 +86,11 @@ def get_figure_2(data):
         yaxis=dict(title='Nombre'),
         legend_title='Légende',
         title={
-            'text': "<b>Nombre d'activités complétées versus nombre d'annulations<br>de rendez-vous d'un patient au cours de 28 jours<b>",
+            'text': "<b>Nombre d'activités complétées versus d'annulations<br>de rendez-vous au cours de 28 jours<b>",
             'font': {
                 'size': 15,
             },
-            'x': 0.4,
+            'x': 0.33,
             'xanchor': 'center',
         },
     )

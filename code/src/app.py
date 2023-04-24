@@ -163,8 +163,7 @@ app.layout = html.Div(className='content', children=[
                 dcc.Tab(label='Notes et hospitalisations', 
                         selected_className='tab-selected',
                         children=[
-                    html.Div(className='text', 
-                             children=[
+                    html.Div(className='text', children=[
                         html.P(className='sectionHeader', children=[texts.SECTION_2_GROUPED_BAR_HEADER])
                     ]),
                     html.Div(className='sectionContent', children = [
@@ -202,9 +201,8 @@ app.layout = html.Div(className='content', children=[
                 dcc.Tab(label='Chutes et hospitalisations', 
                         selected_className='tab-selected',
                         children=[
-                        html.Div(className='text', 
-                             children=[
-                                html.P(className='sectionHeader', children=[texts.SECTION_2_UNIVARIATE_SCATTER_PLOT_HEADER])
+                        html.Div(className='text', children=[
+                            html.P(className='sectionHeader', children=[texts.SECTION_2_UNIVARIATE_SCATTER_PLOT_HEADER])
                         ]),
                         html.Div(className='sectionContent', children = [
                             html.P(className='sectionDescription', children=[texts.SECTION_2_UNIVARIATE_SCATTER_PLOT_DESCRIPTION]),
@@ -224,7 +222,7 @@ app.layout = html.Div(className='content', children=[
                 ]),
                 dcc.Tab(label='Annulation de visites', 
                         selected_className='tab-selected', children=[
-                    html.Div([
+                    html.Div(className='text', children=[
                         html.P(className='sectionHeader', id='section3', children=[texts.SECTION_3_GROUPED_BAR_HEADER])
                     ]),
                     html.Div(className='sectionContent', children = [

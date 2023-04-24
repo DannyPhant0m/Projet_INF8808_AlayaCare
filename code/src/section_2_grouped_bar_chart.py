@@ -47,7 +47,7 @@ def get_figure_hospitalization(data):
             'font': {
                 'size': 15,
             },
-            'x': 0.4,
+            'x': 0.42,
             'xanchor': 'center',
         },
     )
@@ -98,7 +98,7 @@ def get_figure_falls(data):
             'font': {
                 'size': 15,
             },
-            'x': 0.4,
+            'x': 0.44,
             'xanchor': 'center',
         },
     )
